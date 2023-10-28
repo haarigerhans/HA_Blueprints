@@ -148,7 +148,7 @@ action:
               - service_template: light.turn_on
                 target: !input light
                 data_template:
-                  color_temp: "{{ ( state_attr( light.entity_id, 'color_temp' ) or 300 ) + value }}"
+                  color_temp: "{{ ( state_attr( light.entity_id, 'color_temp' ) or 300 ) + value * 5 }}"
                   transition: "{{ speed }}"
     - conditions:
         - "{{ command == 'step_color_temp' }}"
@@ -164,7 +164,7 @@ action:
               - service_template: light.turn_on
                 target: !input light
                 data_template:
-                  color_temp: "{{ ( state_attr( light.entity_id, 'color_temp' ) or 300 ) - value }}"
+                  color_temp: "{{ ( state_attr( light.entity_id, 'color_temp' ) or 300 ) - value * 5 }}"
                   transition: "{{ speed }}"
 
     # Command Mode: Color Hue
